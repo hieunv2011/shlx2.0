@@ -3,7 +3,7 @@ import axios from "axios";
 import Select from "react-select";
 import { FaSearch } from "react-icons/fa";
 
-const DatSearch = ({
+const TeaSearch = ({
   onSubmitName,
   onSubmitId,
   onSelectStatus,
@@ -62,79 +62,86 @@ const DatSearch = ({
     onAddButtonClick();
   };
   return (
-    <div className="flex space-x-2">
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Họ và tên
-        </label>
-        <input
-          type="text"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-60 p-2.5 h-[38px]"
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Chứng minh thư
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
-          onChange={(e) => setId(e.target.value)}
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Giấy phép lái xe
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
-          onChange={(e) => setGplx(e.target.value)}
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Giấy phép đào tạo
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
-          onChange={(e) => setGpdt(e.target.value)}
-        />
+    <div className="flex max-phone:flex-col space-x-2 max-phone:space-x-0">
+      <div className="max-phone:flex max-phone:space-x-2">
+        <div className="">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Họ và tên
+          </label>
+          <input
+            type="text"
+            className="max-phone:w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-60 p-2.5 h-[38px]"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Chứng minh thư
+          </label>
+          <input
+            type="text"
+            id="default-input"
+            className="max-phone:w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
+            onChange={(e) => setId(e.target.value)}
+          />
+        </div>
       </div>
 
-      <form>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Đồng bộ
-        </label>
-        <Select
-          className="w-40"
-          placeholder="Tất cả"
-          value={selectedStatusOption}
-          onChange={handleChange}
-          options={stateOptions}
-          menuPortalTarget={document.body}
-          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-        />
-      </form>
-      <button
-        className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-7 rounded-xl h-[38px] flex justify-center items-center"
-        onClick={handleSubmit}
-      >
-        <FaSearch />
-      </button>
-      <button
-        className="text-white bg-green-500 hover:bg-green-500 px-4  my-7 rounded-xl h-[38px]"
-        onClick={handleAddButtonClick}
-      >
-        Thêm mới
-      </button>
+      <div className="max-phone:flex max-phone:space-x-2">
+        <div className="">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Giấy phép lái xe
+          </label>
+          <input
+            type="text"
+            id="default-input"
+            className="max-phone:w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
+            onChange={(e) => setGplx(e.target.value)}
+          />
+        </div>
+        <div className="">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Giấy phép đào tạo
+          </label>
+          <input
+            type="text"
+            id="default-input"
+            className="max-phone:w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-40 p-2.5 h-[38px]"
+            onChange={(e) => setGpdt(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="max-phone:flex max-phone:space-x-1">
+        <form>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Đồng bộ
+          </label>
+          <Select
+            className="w-40 max-phone:w-3"
+            placeholder="Tất cả"
+            value={selectedStatusOption}
+            onChange={handleChange}
+            options={stateOptions}
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          />
+        </form>
+        <button1
+          className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-1 rounded-xl h-[38px] flex justify-center items-center"
+          onClick={handleSubmit}
+        >
+          <FaSearch />
+        </button1>
+        <button
+          className="text-white bg-green-500 hover:bg-green-500 px-4  my-1 rounded-xl h-[38px]"
+          onClick={handleAddButtonClick}
+        >
+          Thêm mới
+        </button>
+      </div>
     </div>
   );
 };
 
-export default DatSearch;
+export default TeaSearch;

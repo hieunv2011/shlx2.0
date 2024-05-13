@@ -43,10 +43,10 @@ const DatAddNew = () => {
 
   return (
     <div className="">
-      <h2 className="text-2xl w-80 font-semibold">Thêm thiết bị Dat mới</h2>
+      <h2 className="text-2xl w-80 font-semibold max-phone:text-xl">Thêm thiết bị Dat mới</h2>
       <form onSubmit={handleSubmit} className="h-full w-full border border-slate-300 rounded-lg">
         <div className="flex justify-center flex-col m-4">
-          <div className="flex space-x-10">
+          <div className="flex space-x-10 max-phone:flex-col max-phone:space-x-0">
             <div className="space-y-4">
               <div className="mb-4">
                 <label className="block text-gray-700 text-base w-52">

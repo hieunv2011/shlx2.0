@@ -9,7 +9,7 @@ import { FaUserEdit, FaTimesCircle } from "react-icons/fa";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { motion } from "framer-motion";
 
-import { Location, Pagination, CardSearch, CardAddNew } from "../components";
+import { Location, Pagination, CardSearch, CardAddNew, Footer } from "../components";
 
 const Card = ({ currentPage }) => {
   const [data, setData] = useState([]);
@@ -117,7 +117,7 @@ const handleDelete = async (id) => {
         <Location />
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 h-[15%]">
+      <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
         <CardSearch
           onSubmitName={handleNameSubmit}
           onSubmitId={handleIdSubmit}
@@ -125,12 +125,12 @@ const handleDelete = async (id) => {
           onSelectType={handleSelectType}
           onAddButtonClick={handleAddNewOpen}
         />
-        <div className="mt-[-25px] absolute right-8">
-          <Pagination onPageChange={handlePageChange} totalCount={totalCount} />
+        <div className="w-full flex justify-end">
+          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 border border-slate-200 h-[65%] overflow-scroll custom-scrollbar">
+      <div className="m-4 border border-slate-200 h-[65%] max-phone:h-[44%] overflow-scroll custom-scrollbar">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <img src={loadinng} alt="loading..." className="" />
@@ -221,13 +221,7 @@ const handleDelete = async (id) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between text-slate-600">
-        <p className="p-4">HỆ THỐNG QUÁN LÝ ĐÀO TẠO LÁI XE</p>
-        <p className="p-4">
-          Giải pháp của Toàn Phương SHLX. 0904.666.329 - 0982.911.000. Email:
-          shlx@toanphuong.com.vn
-        </p>
-      </div>
+      <Footer/>
       {isAddNewOpen && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center z-50"
@@ -238,8 +232,8 @@ const handleDelete = async (id) => {
             className="fixed inset-0 bg-black opacity-50"
             onClick={handleAddNewClose}
           ></div>
-          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[50%] h-[70%]">
-            <CardAddNew onClose={handleAddNewClose} />
+          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[50%] h-[70%] max-phone:h-fit max-phone:w[80%]">
+            <CardAddNew onClose={handleAddNewClose}/>
             <button
               className="absolute top-0 right-0 m-2 text-red-500 text-2xl"
               onClick={handleAddNewClose}

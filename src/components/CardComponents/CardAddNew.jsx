@@ -57,7 +57,8 @@ class CardAddNew extends React.Component {
 
   //File mẫu
   downloadFile = () => {
-    const fileUrl = "https://raw.githubusercontent.com/haiz/assets/main/xlhs/card-samples.csv";
+    const fileUrl =
+      "https://raw.githubusercontent.com/haiz/assets/main/xlhs/card-samples.csv";
 
     const link = document.createElement("a");
     window.open(fileUrl);
@@ -70,21 +71,23 @@ class CardAddNew extends React.Component {
     ];
 
     return (
-      <div>
+      <div className="">
         <div>
           <h1 className="text-2xl">Import thẻ</h1>
           <div className="h-[1px] w-full bg-slate-400"></div>
-          <div className="flex items-center mt-4">
-            <h1 className="text-xl font-medium">Loại thẻ</h1>
-            <Select
-              className="w-80 ml-5"
-              placeholder="Tất cả"
-              options={typeOptions}
-              onChange={this.handleTypeChange} // Lắng nghe sự kiện thay đổi
-              menuPortalTarget={document.body}
-              styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-            />
-            <div className="ml-44 flex space-x-2">
+          <div className="flex mt-4 space-x-0">
+            <div className="flex space-x-4 max-phone:flex-col max-phone:space-x-0">
+              <h1 className="text-xl font-medium">Loại thẻ</h1>
+              <Select
+                className="w-40 ml-5"
+                placeholder="Tất cả"
+                options={typeOptions}
+                onChange={this.handleTypeChange} // Lắng nghe sự kiện thay đổi
+                menuPortalTarget={document.body}
+                styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+              />
+            </div>
+            <div className="ml-44 max-phone:ml-10 flex space-x-2">
               <Link
                 className="text-black cursor-pointer flex hover:text-blue-800"
                 onClick={this.downloadFile}
@@ -126,7 +129,7 @@ class CardAddNew extends React.Component {
             </div>
           </div>
         </div>
-        <div className="flex pt-5 items-center justify-center space-x-3">
+        <div className="flex max-phone:pt-5 items-center justify-center space-x-3">
           <button
             type="submit"
             className="bg-green-600 p-3 w-40 text-white rounded-md"

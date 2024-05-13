@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div className="h-screen flex flex-col bg-slate-200">
          <Navigation className="h-1/6" toggleSidebar={toggleSidebar}/>
-        <div className="flex flex-grow h-5/6">
+        <div className="flex flex-grow h-full w-full">
           <Sidebar className="w-4/12" show={showSidebar} toggleSidebar={toggleSidebar}/>
           <div className="flex-grow bg-slate-200 w-8/12">
             <Routes>

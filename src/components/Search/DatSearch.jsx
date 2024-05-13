@@ -7,7 +7,8 @@ const DatSearch = ({
   onSubmitName,
   onSubmitId,
   onSelectStatus,
-  onSubmitMainboard,onAddButtonClick 
+  onSubmitMainboard, 
+  onAddButtonClick,
 }) => {
   const [name, setName] = useState("");
   const [mainboard, setMainboard] = useState("");
@@ -39,11 +40,10 @@ const DatSearch = ({
     if (
       !name &&
       !id &&
-      !mainboard&&
+      !mainboard &&
       !selectedCourseOption &&
       !selectedStatusOption &&
       !selectedSyncOption
-
     ) {
       onSubmitName("");
       onSubmitMainboard("");
@@ -71,68 +71,66 @@ const DatSearch = ({
 
   //Add new
   const handleAddButtonClick = () => {
-    onAddButtonClick(); 
+    onAddButtonClick();
   };
 
   return (
-    <div className="flex space-x-2">
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Tên máy
-        </label>
-        <input
-          type="text"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-60 p-2.5 h-[38px]"
-          onChange={(e) => setName(e.target.value)}
-        />
+    <div className="flex space-x-2 max-phone:flex-col max-phone:space-x-0">
+      <div className="flex space-x-2 max-phone:space-x-1">
+        <div className="flex flex-col">
+          <label>Tên máy</label>
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            className="w-48 max-phone:w-40 border border-slate-500 h-10 rounded-lg "
+          />
+        </div>
+        <div className="flex flex-col">
+          <label>Số Serial</label>
+          <input
+            type="text"
+            onChange={(e) => setId(e.target.value)}
+            className="w-48 max-phone:w-40 border border-slate-500 h-10 rounded-lg"
+          />
+        </div>
       </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Số Serial
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-60 p-2.5 h-[38px]"
-          onChange={(e) => setId(e.target.value)}
-        />
+
+      <div className="flex space-x-2 max-phone:space-x-1">
+        <div className="flex flex-col">
+          <label>Mainboard</label>
+          <input
+            type="text"
+            onChange={(e) => setMainboard(e.target.value)}
+            className="w-48 max-phone:w-40 border border-slate-500 h-10 rounded-lg"
+          />
+        </div>
+        <form>
+          <label>Trạng thái</label>
+          <Select
+            placeholder="Tất cả"
+            value={selectedStatusOption}
+            onChange={handleChange}
+            options={stateOptions}
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+            className="w-48 max-phone:w-40"
+          />
+        </form>
       </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Mainboard
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-60 p-2.5 h-[38px]"
-          onChange={(e) => setMainboard(e.target.value)}
-        />
+
+      <div className="mt-6 flex space-x-2 ml-2 max-phone:mt-2">
+        <button onClick={handleSubmit} className="h-9 w-10 bg-blue-500 rounded-lg text-white flex justify-center items-center ">
+          <FaSearch />
+        </button>
+        <button onClick={handleAddButtonClick} className="h-9 w-32 bg-green-400 rounded-lg text-white">Thêm mới</button>
       </div>
-      <form>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Trạng thái
-        </label>
-        <Select
-          className="w-40"
-          placeholder="Tất cả"
-          value={selectedStatusOption}
-          onChange={handleChange}
-          options={stateOptions}
-          menuPortalTarget={document.body}
-          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-        />
-      </form>
-      <button
-        className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-7 rounded-xl h-[38px] flex justify-center items-center"
-        onClick={handleSubmit}
-      >
-        <FaSearch />
-      </button>
-      <button className="text-white bg-green-500 hover:bg-green-500 px-4  my-7 rounded-xl h-[38px]"
-      onClick={handleAddButtonClick}>
-        Thêm mới 
-      </button>
     </div>
+
+    // <div className="flex sm:max-lg:flex-col">
+    //   <div className="h-20 w-80 bg-red-700">ê</div>
+    //   <div className="h-20 w-80 bg-blue-700"></div>
+    //   <div className="h-20 w-80 bg-yellow-700"></div>
+    // </div>
   );
 };
 

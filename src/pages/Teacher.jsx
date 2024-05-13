@@ -9,7 +9,7 @@ import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import {FaUserEdit,FaTimesCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-import { Location, Pagination, TeacherAddNew, TeacherSearch } from "../components";
+import { Footer, Location, Pagination, TeacherAddNew, TeacherSearch } from "../components";
 
 const Teacher = ({ currentPage }) => {
   const [data, setData] = useState([]);
@@ -101,7 +101,7 @@ const Teacher = ({ currentPage }) => {
         <Location />
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 h-[15%]">
+      <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
         <TeacherSearch
           onSubmitName={handleNameSubmit}
           onSubmitId={handleIdSubmit}
@@ -110,12 +110,12 @@ const Teacher = ({ currentPage }) => {
           onSelectStatus={handleSelectStatus}
           onAddButtonClick={handleAddNewOpen} 
         />
-        <div className="mt-[-25px] absolute right-8">
-          <Pagination onPageChange={handlePageChange} totalCount={totalCount} />
+        <div className="w-full flex justify-end">
+          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 border border-slate-200 h-[65%] overflow-scroll custom-scrollbar">
+      <div className="m-4 border border-slate-200 h-[65%] max-phone:h-[44%] overflow-scroll custom-scrollbar">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <img src={loadinng} alt="loading..." className="" />
@@ -149,7 +149,7 @@ const Teacher = ({ currentPage }) => {
                   <th className="text-sm border border-slate-200">Tên thẻ</th>
                   <th className="text-sm border border-slate-200">Số thẻ</th>
                   <th className="text-sm border border-slate-200">Đồng bộ</th>
-                  <th className="text-sm border border-slate-200 border-l-black">
+                  <th className="text-sm sticky right-0 bg-slate-100 border shadow-[rgba(0,0,255,0.5)_-3px_0px_10px_0px] border-b-slate-200">
                     Thao tác
                   </th>
                 </tr>
@@ -231,13 +231,7 @@ const Teacher = ({ currentPage }) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between text-slate-600">
-        <p className="p-4">HỆ THỐNG QUÁN LÝ ĐÀO TẠO LÁI XE</p>
-        <p className="p-4">
-          Giải pháp của Toàn Phương SHLX. 0904.666.329 - 0982.911.000. Email:
-          shlx@toanphuong.com.vn
-        </p>
-      </div>
+      <Footer/>
       {isAddNewOpen && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center z-50"

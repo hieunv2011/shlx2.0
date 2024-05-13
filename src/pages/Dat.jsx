@@ -8,7 +8,7 @@ import loadinng from "../assets/loading.gif";
 import {FaUserEdit,FaTimesCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-import { Location, Pagination, DatSearch, DatAddNew, DatEdit } from "../components";
+import { Location, Pagination, DatSearch, DatAddNew, DatEdit, Footer } from "../components";
 
 const Dat = ({ currentPage }) => {
   const [data, setData] = useState([]);
@@ -104,21 +104,20 @@ const Dat = ({ currentPage }) => {
         <Location />
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 h-[15%]">
+      <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
         <DatSearch
           onSubmitName={handleNameSubmit}
           onSubmitId={handleIdSubmit}
           onSelectStatus={handleSelectStatus}
           onSubmitMainboard={handleMainboardSubmit}
-          onAddButtonClick={handleAddNewOpen} 
-
+          onAddButtonClick={handleAddNewOpen}
         />
-        <div className="mt-[-25px] absolute right-8">
-          <Pagination onPageChange={handlePageChange} totalCount={totalCount} />
+        <div className="w-full flex justify-end">
+          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 border border-slate-200 h-[65%] overflow-scroll custom-scrollbar">
+      <div className="m-4 border border-slate-200 h-[65%] max-phone:h-[44%] overflow-scroll custom-scrollbar">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <img src={loadinng} alt="loading..." className="" />
@@ -164,24 +163,24 @@ const Dat = ({ currentPage }) => {
                   <th className="text-sm px-6 py-3 border border-slate-200">
                     Trạng thái
                   </th>
-                  <th className="text-sm sticky right-0 bg-slate-100 border border-l-black border-b-slate-200">
+                  <th className="text-sm sticky right-0 bg-slate-100 border shadow-[rgba(0,0,255,0.5)_-3px_0px_10px_0px] border-b-slate-200">
                     Thao tác
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="mt-1">
                 {data.map((element, index) => (
                   <tr key={index} className="h-10">
                     <td className="text-xs text-center border border-slate-100">
                      {startIndex + index}
                     </td>
                     <td className="text-xs border border-slate-100">
-                      <div className="w-32 flex items-center justify-center font-medium text-blue-700">
+                      <div className="w-32 max-phone:w-20 flex items-center justify-center font-medium text-blue-700 whitespace-normal overflow-auto">
                       {element.name}
                       </div>
                     </td>
                     <td className="text-xs border border-slate-100">
-                      <div className="flex items-center justify-center w-60">
+                      <div className="flex items-center justify-center w-60 max-phone:w-32">
                       {element.serial_no}
                       </div>
                     </td>
@@ -225,8 +224,8 @@ const Dat = ({ currentPage }) => {
                        {element.status ? "Đang hoạt động" : "Không hoạt động"}
                       </div>
                     </td>
-                    <td className="text-xl border sticky right-0 bg-white border-l-black">
-                      <div className="flex items-center justify-center w-36 ">
+                    <td className="text-xl border sticky right-0 bg-white shadow-[rgba(0,0,255,0.5)_1px_10px_10px_0px]">
+                      <div className="flex items-center justify-center w-20  ">
                         <FaUserEdit className="text-blue-500 mr-2 cursor-pointer" onClick={() => handleEditOpen(element.id)} />
                       </div>
                     </td>
@@ -237,12 +236,8 @@ const Dat = ({ currentPage }) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between text-slate-600">
-        <p className="p-4">HỆ THỐNG QUÁN LÝ ĐÀO TẠO LÁI XE</p>
-        <p className="p-4">
-          Giải pháp của Toàn Phương SHLX. 0904.666.329 - 0982.911.000. Email:
-          shlx@toanphuong.com.vn
-        </p>
+      <div>
+          <Footer/>
       </div>
       {isAddNewOpen && (
         <motion.div
@@ -254,7 +249,7 @@ const Dat = ({ currentPage }) => {
             className="fixed inset-0 bg-black opacity-50"
             onClick={handleAddNewClose}
           ></div>
-          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[50%] h-[70%]">
+          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[70%] h-[70%] max-phone:h-fit">
             <DatAddNew/>
             <button
               className="absolute top-0 right-0 m-2 text-red-500 text-2xl"
