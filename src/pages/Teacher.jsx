@@ -97,8 +97,9 @@ const Teacher = ({ currentPage }) => {
   };
   return (
     <div className="m-4 bg-white w-12/12 space-y-2 h-[95%]">
-      <div className="m-4 h-[6%]">
-        <Location />
+      <div className="m-4 h-[6%] font-bold text-2xl max-phone:text-[20px] max-phone:pt-2">
+        {/* <Location /> */}
+        Danh sách giáo viên
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
       <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
@@ -242,7 +243,7 @@ const Teacher = ({ currentPage }) => {
             className="fixed inset-0 bg-black opacity-50"
             onClick={handleAddNewClose}
           ></div>
-          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[50%] h-[70%]">
+          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[70%] h-[70%] max-phone:h-fit">
             <TeacherAddNew />
             <button
               className="absolute top-0 right-0 m-2 text-red-500 text-2xl"

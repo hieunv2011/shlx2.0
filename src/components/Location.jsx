@@ -17,11 +17,11 @@ const Location = () => {
       return 'Khoá học';
     } else if (pathname === '/dat') {
       return 'Thiết bị DAT';
-    } else if (pathname === '/Session') {
+    } else if (pathname === '/session') {
       return 'Thông tin phiên học';
     } else if (pathname === '/teacher') {
       return 'Danh sách giáo viên';
-    } else if (pathname === '/trainees') {
+    } else if (pathname.startsWith('/trainees')) {
       return 'Danh sách học viên';
     } else if (pathname === '/trainningcar') {
       return 'Danh sách xe tập lái';

@@ -231,7 +231,7 @@ const Sidebar = ({ show, toggleSidebar }) => {
         <motion.div
           className="h-full"
           initial={{ x: 0, width: 0 }}
-          animate={{ x: 0, width: 240 }}
+          animate={{ x: 0, width: 255 }}
           transition={{ duration: 0.7 }}
         >
           
@@ -389,7 +389,7 @@ const Sidebar = ({ show, toggleSidebar }) => {
       {!show && setSidebarShow && (
         <motion.div
           className="h-full"
-          initial={{ x: 0, width: 240 }}
+          initial={{ x: 0, width: 255 }}
           animate={{ x: 0, width: 0 }}
           transition={{ duration: 0.7 }}
 

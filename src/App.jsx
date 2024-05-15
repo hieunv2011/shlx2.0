@@ -31,6 +31,7 @@ function App() {
               <Route path="/session" element={<Session />} /> 
               <Route path="/teacher" element={<Teacher />} /> 
               <Route path="/trainees" element={<Trainees />} /> 
+              <Route path="/trainees/:course_id" element={<Trainees />} /> 
               <Route path="/trainningcar" element={<TrainningCar />} /> 
             </Routes>
           </div>

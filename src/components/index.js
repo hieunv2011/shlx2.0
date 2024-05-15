@@ -18,6 +18,7 @@ export {default as FaceRegister} from "./TraineesComponents/FaceRegister"
 export {default as FingerPrint} from "./TraineesComponents/FingerPrint"
 export {default as InformationDetail} from "./TraineesComponents/InformationDetail"
 export {default as SessionDetail} from "./TraineesComponents/SessionDetail"
+export {default as SessionMap} from "./TraineesComponents/SessionMap"
 
 //DatComponents
 export {default as DatAddNew} from "./DatComponents/DatAddNew"

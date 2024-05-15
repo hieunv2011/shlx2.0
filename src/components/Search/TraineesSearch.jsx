@@ -101,89 +101,96 @@ const TraineesSearch = ({
   };
 
   return (
-    <div className="flex space-x-2">
-      <form>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Khoá học
-        </label>
-        <Select
-          className="w-60"
-          placeholder="Không xác định"
-          value={selectedCourseOption}
-          onChange={handleCourseChange}
-          menuPortalTarget={document.body} 
-          styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
-          options={[
-            { value: 0, label: "Không xác định" },
-            ...data.map((course) => ({
-              value: course.id,
-              label: course.ten_khoa_hoc,
-            })),
-          ]}
-        />
-      </form>
-      <form>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Trạng thái
-        </label>
-        <Select
-          className="w-40"
-          placeholder="Tất cả"
-          value={selectedStatusOption}
-          onChange={handleChange}
-          options={stateOptions}
-          menuPortalTarget={document.body} 
-          styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
-        />
-      </form>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Họ tên / Mã ĐK / Số CMT
-        </label>
-        <input
-          type="text"
-          id="default-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-58 p-2.5 h-[38px]"
-          onChange={(e) => setName(e.target.value)}
-        />
+    <div className="flex space-x-4 max-phone:flex-col max-phone:space-x-0">
+      <div className="flex space-x-4 max-phone:space-x-2">
+        <form>
+          <label className="block  text-sm font-medium text-gray-900 dark:text-white">
+            Khoá học
+          </label>
+          <Select
+            className="w-60 max-phone:w-44"
+            placeholder="Không xác định"
+            value={selectedCourseOption}
+            onChange={handleCourseChange}
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+            options={[
+              { value: 0, label: "Không xác định" },
+              ...data.map((course) => ({
+                value: course.id,
+                label: course.ten_khoa_hoc,
+              })),
+            ]}
+          />
+        </form>
+        <form>
+          <label className="block  text-sm font-medium text-gray-900 dark:text-white">
+            Trạng thái
+          </label>
+          <Select
+            className="w-40 max-phone:w-32"
+            placeholder="Tất cả"
+            value={selectedStatusOption}
+            onChange={handleChange}
+            options={stateOptions}
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          />
+        </form>
       </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          ID thẻ
-        </label>
-        <input
-          type="text"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-32 p-2.5 h-[38px]"
-          onChange={(e) => setId(e.target.value)}
-        />
+
+      <div className="flex space-x-4 max-phone:space-x-2">
+        <div className="">
+          <label className="block  text-sm font-medium text-gray-900 dark:text-white">
+            Họ tên / Mã ĐK / Số CMT
+          </label>
+          <input
+            type="text"
+            id="default-input"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-58 p-2.5 h-[38px] max-phone:w-44"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="">
+          <label className="block  text-sm font-medium text-gray-900 dark:text-white">
+            ID thẻ
+          </label>
+          <input
+            type="text"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md block w-32 p-2.5 h-[38px]"
+            onChange={(e) => setId(e.target.value)}
+          />
+        </div>
       </div>
-      <form>
-        <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+
+      <div className="flex space-x-4 max-phone:space-x-2">
+        <form>
+          <label className="block  text-sm font-medium text-gray-900 dark:text-white">
+            Đồng bộ
+          </label>
+          <Select
+            className="w-32"
+            placeholder="Tất cả"
+            value={selectedSyncOption}
+            onChange={handleSyncChange}
+            options={options}
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          />
+        </form>
+        <button
+          className="text-white bg-blue-700 hover:bg-blue-800 px-4  mt-5 rounded-xl h-[38px] flex justify-center items-center"
+          onClick={handleSubmit}
         >
-          Đồng bộ
-        </label>
-        <Select
-        className="w-32"
-          placeholder="Tất cả"
-          value={selectedSyncOption}
-          onChange={handleSyncChange}
-          options={options}
-          menuPortalTarget={document.body} 
-          styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
-        />
-      </form>
-      <button className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-7 rounded-xl h-[38px] flex justify-center items-center"
-      onClick={handleSubmit}
-      >
-        <FaSearch />
-      </button>
-      <button className="text-white bg-orange-500 hover:bg-orange-600 px-4  my-7 rounded-xl h-[38px]">
-        Gán thẻ
-      </button>
-      <button className="text-white bg-green-500 hover:bg-green-500 px-4  my-7 rounded-xl h-[38px]">
-        Báo cáo
-      </button>
+          <FaSearch />
+        </button>
+        <button className="text-white bg-orange-500 hover:bg-orange-600 px-4  mt-5 rounded-xl h-[38px] max-phone:text-sm">
+          Gán thẻ
+        </button>
+        <button className="text-white bg-green-500 hover:bg-green-500 px-4  mt-5 rounded-xl h-[38px] max-phone:text-sm">
+          Báo cáo
+        </button>
+      </div>
     </div>
   );
 };

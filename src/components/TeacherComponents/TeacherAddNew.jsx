@@ -79,9 +79,9 @@ const TeacherAddNew = () => {
           /> */}
           </div>
           <div className="space-x-2">
-            <div className="flex space-x-2">
-              <div>
-                <div className="mb-4 w-50">
+            <div className="min-phone:flex space-x-2">
+              <div className="">
+                <div className="mb-4">
                   <label className=" text-sm font-medium text-gray-700">
                     Họ và tên:
                   </label>
@@ -93,7 +93,7 @@ const TeacherAddNew = () => {
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:ring-indigo-300"
                   />
                 </div>
-                <div className="mb-4 w-50">
+                <div className="mb-4">
                   <label className=" text-sm font-medium text-gray-700">
                     Ngày sinh:
                   </label>
@@ -105,7 +105,7 @@ const TeacherAddNew = () => {
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:ring-indigo-300"
                   />
                 </div>
-                <div className="mb-4 w-50">
+                <div className="mb-4">
                   <label className=" text-sm font-medium text-gray-700">
                     ID Card:
                   </label>
@@ -118,6 +118,7 @@ const TeacherAddNew = () => {
                   />
                 </div>
               </div>
+
               <div>
                 <div className="mb-4">
                   <label className=" text-sm font-medium text-gray-700">
@@ -156,6 +157,7 @@ const TeacherAddNew = () => {
                   />
                 </div>
               </div>
+
             </div>
             <button
               type="submit"

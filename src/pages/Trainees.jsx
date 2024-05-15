@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useParams } from "react-router-dom";
 import { format } from "date-fns";
 
 import nodatafound from "../assets/nodatafound.jpg";
@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import {
   FaceRegister,
   FingerPrint,
+  Footer,
   InformationDetail,
   Location,
   Pagination,
@@ -120,17 +121,25 @@ const Trainees = ({ currentPage }) => {
     setIsFaceVisible(!isFaceVisible);
   };
   const [isSessionVisible, setIsSessionVisible] = useState(false);
-  const handleNameClick = () => {
+  const [selectedId, setSelectedId] = useState(null);
+  const [selectedName, setSelectedName] = useState(null);
+  const handleNameClick = (id,name) => {
     setIsSessionVisible(!isSessionVisible);
+    setSelectedId(id);
+    setSelectedName(name);
   };
+
+  //Course_id
+  const { course_id } = useParams();
+  // console.log(course_id);
 
   return (
     <div className="m-4 bg-white w-12/12 space-y-2 h-[95%]">
       <div className="m-4 h-[6%]">
-        <Location />
+        <Location className="overflow-x-auto"/>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 h-[15%]">
+      <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
         <TraineesSearch
           onSubmitName={handleNameSubmit}
           onSubmitId={handleIdSubmit}
@@ -138,12 +147,12 @@ const Trainees = ({ currentPage }) => {
           onSelectSynced={handleSelectSynced}
           onSubmitCourse={handleSubmitCourse}
         />
-        <div className="mt-[-25px] absolute right-8">
-          <Pagination onPageChange={handlePageChange} totalCount={totalCount}/>
+        <div className="w-full flex justify-end">
+          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 border border-slate-200 h-[65%] overflow-scroll custom-scrollbar">
+      <div className="m-4 border border-slate-200 h-[65%] max-phone:h-[44%] overflow-scroll custom-scrollbar">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <img src={loadinng} alt="loading..." className="" />
@@ -274,7 +283,7 @@ const Trainees = ({ currentPage }) => {
                     <td className="text-xs ">
                       <div className="w-40 h-[1px]0 flex items-center">
                         <Link className="text-blue-800 font-medium"
-                        onClick={handleNameClick}>
+                        onClick={() => handleNameClick(element.id,element.ho_va_ten)}>
                           {element.ho_va_ten}
                         </Link>
                       </div>
@@ -424,13 +433,7 @@ const Trainees = ({ currentPage }) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between text-slate-600">
-        <p className="p-4">HỆ THỐNG QUÁN LÝ ĐÀO TẠO LÁI XE</p>
-        <p className="p-4">
-          Giải pháp của Toàn Phương SHLX. 0904.666.329 - 0982.911.000. Email:
-          shlx@toanphuong.com.vn
-        </p>
-      </div>
+        <Footer/>
       {isInformationDetailVisible && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center z-50"
@@ -505,7 +508,7 @@ const Trainees = ({ currentPage }) => {
             onClick={handleEditButtonClick}
           ></div>
           <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[50%] h-[70%]">
-            <SessionDetail />
+            <SessionDetail selectedId={selectedId} selectedName={selectedName} />
             <button
               className="absolute top-0 right-0 m-2 text-red-500 text-2xl"
               onClick={handleNameClick}

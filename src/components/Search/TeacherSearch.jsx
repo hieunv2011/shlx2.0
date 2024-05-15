@@ -62,8 +62,8 @@ const TeaSearch = ({
     onAddButtonClick();
   };
   return (
-    <div className="flex max-phone:flex-col space-x-2 max-phone:space-x-0">
-      <div className="max-phone:flex max-phone:space-x-2">
+    <div className="flex max-phone:flex-col space-x-2 max-phone:space-x-0 overflow-auto">
+      <div className="flex space-x-4 max-phone:space-x-2">
         <div className="">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Họ và tên
@@ -87,7 +87,7 @@ const TeaSearch = ({
         </div>
       </div>
 
-      <div className="max-phone:flex max-phone:space-x-2">
+      <div className="flex space-x-4 max-phone:space-x-2">
         <div className="">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Giấy phép lái xe
@@ -112,13 +112,13 @@ const TeaSearch = ({
         </div>
       </div>
 
-      <div className="max-phone:flex max-phone:space-x-1">
+      <div className="flex space-x-4 max-phone:space-x-1">
         <form>
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Đồng bộ
           </label>
           <Select
-            className="w-40 max-phone:w-3"
+            className="w-40 max-phone:w-32"
             placeholder="Tất cả"
             value={selectedStatusOption}
             onChange={handleChange}
@@ -127,18 +127,20 @@ const TeaSearch = ({
             styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           />
         </form>
-        <button1
-          className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-1 rounded-xl h-[38px] flex justify-center items-center"
-          onClick={handleSubmit}
-        >
-          <FaSearch />
-        </button1>
-        <button
-          className="text-white bg-green-500 hover:bg-green-500 px-4  my-1 rounded-xl h-[38px]"
-          onClick={handleAddButtonClick}
-        >
-          Thêm mới
-        </button>
+        <div className="flex pt-5 space-x-4">
+          <button
+            className="text-white bg-blue-700 hover:bg-blue-800 px-4  my-1 rounded-xl h-[38px] flex justify-center items-center"
+            onClick={handleSubmit}
+          >
+            <FaSearch />
+          </button>
+          <button
+            className="text-white bg-green-500 hover:bg-green-500 px-4  my-1 rounded-xl h-[38px]"
+            onClick={handleAddButtonClick}
+          >
+            Thêm mới
+          </button>
+        </div>
       </div>
     </div>
   );

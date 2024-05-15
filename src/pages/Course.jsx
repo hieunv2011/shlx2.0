@@ -11,7 +11,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { TbReload } from "react-icons/tb";
 
 
-import { Location, Pagination, CourseSearch } from "../components";
+import { Location, Pagination, CourseSearch, Footer } from "../components";
 
 const Course = ({ currentPage }) => {
   const [data, setData] = useState([]);
@@ -77,19 +77,19 @@ const Course = ({ currentPage }) => {
         <Location />
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 h-[15%]">
+      <div className="m-4 h-[15%] max-phone:h-[33%] overflow-x-auto">
         <CourseSearch
           onSubmitName={handleNameSubmit}
           onSubmitId={handleIdSubmit}
           onSelectStatus={handleSelectStatus}
 
         />
-        <div className="mt-[-25px] absolute right-8">
-          <Pagination onPageChange={handlePageChange} totalCount={totalCount} />
+        <div className="w-full flex justify-end">
+          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
-      <div className="m-4 border border-slate-200 h-[65%] overflow-scroll custom-scrollbar">
+      <div className="m-4 border border-slate-200 h-[65%] max-phone:h-[44%] overflow-scroll custom-scrollbar">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <img src={loadinng} alt="loading..." className="" />
@@ -155,7 +155,7 @@ const Course = ({ currentPage }) => {
                     </td>
                     <td className="text-xs border border-slate-100">
                       <div className="w-32 flex items-center justify-center font-medium text-blue-700">
-                        <Link>{element.ma_khoa_hoc}</Link>
+                      <Link to={`/trainees/${element.ma_khoa_hoc}`}>{element.ma_khoa_hoc}</Link>
                       </div>
                     </td>
                     <td className="text-xs border border-slate-100">
@@ -253,13 +253,7 @@ const Course = ({ currentPage }) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between text-slate-600">
-        <p className="p-4">HỆ THỐNG QUÁN LÝ ĐÀO TẠO LÁI XE</p>
-        <p className="p-4">
-          Giải pháp của Toàn Phương SHLX. 0904.666.329 - 0982.911.000. Email:
-          shlx@toanphuong.com.vn
-        </p>
-      </div>
+    <Footer/>
     </div>
   );
 };
