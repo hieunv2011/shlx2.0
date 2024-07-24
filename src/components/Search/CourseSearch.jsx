@@ -81,7 +81,7 @@ const CourseSearch = ({ onSubmitName, onSubmitId, onSelectStatus }) => {
   };
 
   return (
-    <div className="flex space-x-2 max-phone:flex-col max-phone:space-x-0 space-y-2">
+    <div className="flex space-x-2 max-phone:flex-col max-phone:space-x-0 ">
       <div className="flex space-x-2">
         <div className="">
           <label className="block text-sm font-medium text-gray-900 dark:text-white">
@@ -106,9 +106,9 @@ const CourseSearch = ({ onSubmitName, onSubmitId, onSelectStatus }) => {
         </div>
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 ">
         <form>
-          <label className=" text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block text-sm font-medium text-gray-900 dark:text-white">
             Trạng thái
           </label>
           <Select
@@ -122,18 +122,18 @@ const CourseSearch = ({ onSubmitName, onSubmitId, onSelectStatus }) => {
           />
         </form>
         <button
-          className="text-white bg-blue-700 hover:bg-blue-800 px-4 mt-6 rounded-xl h-[38px] flex justify-center items-center"
+          className="mt-5 text-white bg-blue-700 hover:bg-blue-800 px-4  rounded-xl h-[38px] flex justify-center items-center"
           onClick={handleSubmit}
         >
           <FaSearch />
         </button>
-        <button className="text-white bg-orange-500 hover:bg-orange-600 px-4 mt-6 rounded-xl h-[38px]">
+        <button className="mt-5 text-white bg-orange-500 hover:bg-orange-600 px-4  rounded-xl h-[38px]">
           Import
         </button>
       </div>
 
       <div className="flex">
-        <button className="text-white bg-green-500 hover:bg-green-500 px-4 rounded-xl h-[38px]">
+        <button className="mt-5 text-white bg-green-500 hover:bg-green-500 px-4 rounded-xl h-[38px] ">
           Báo cáo
         </button>
       </div>

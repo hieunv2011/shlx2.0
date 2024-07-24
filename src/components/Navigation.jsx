@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi"; // Import biểu tượng menu từ React Icons
 import Sidebar from "./Sidebar";
+import { Link} from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { AiOutlineMenu } from "react-icons/ai";
-
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Navigation = ({ toggleSidebar }) => {
   const [show, setShow] = useState(false);
@@ -45,6 +47,17 @@ const Navigation = ({ toggleSidebar }) => {
     }
   };
 
+  //Tooltip
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+
+  const showTooltip = () => {
+    setIsTooltipVisible(!isTooltipVisible);
+  };
+  //Logout
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+  };
+
   return (
     <div>
       {show && (
@@ -52,7 +65,9 @@ const Navigation = ({ toggleSidebar }) => {
           <div className="flex-col flex">
             <div className="w-full border-b-2 border-gray-200">
               <div className="bg-white h-16 justify-between items-center mx-auto px-4 flex">
-              <button onClick={toggleSidebar} className=""><AiOutlineMenu /></button>
+                <button onClick={toggleSidebar} className="">
+                  <AiOutlineMenu />
+                </button>
                 <div className="font-bold text-3xl pl-4">SHLX</div>
                 <div className="lg:block mr-auto ml-40 hidden relative max-w-xs">
                   <p className="pl-3 items-center flex absolute inset-y-0 left-0 pointer-events-none">
@@ -146,9 +161,28 @@ const Navigation = ({ toggleSidebar }) => {
                   <div className="justify-center items-center flex relative">
                     <img
                       src="https://static01.nyt.com/images/2019/11/08/world/08quebec/08quebec-superJumbo.jpg"
-                      className="object-cover btn- h-9 w-9 rounded-full mr-2 bg-gray-300"
+                      className="object-cover btn- h-9 w-9 rounded-full mr-2 bg-gray-300 image"
                       alt=""
+                      onClick={showTooltip}
                     />
+                    {isTooltipVisible && (
+                      <div
+                        className="absolute bg-white p-2 border rounded shadow-lg"
+                        style={{ top: "50px", left: "20px" }} // Điều chỉnh theo vị trí bạn muốn
+                      >
+                        <div className="flex space-y-4 mx-2 flex-col">
+                          <button>Đổi mật khẩu</button>
+                          <button>Đổi mật khẩu truyền dữ liệu</button>
+                          <Link
+                            className="hover:bg-black hover:text-white"
+                            onClick={()=>{handleLogout();showTooltip()}}
+                            to="/login"
+                          >
+                            Đăng xuất
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                     <p className="font-semibold text-sm">{data.name}</p>
                   </div>
                 </div>

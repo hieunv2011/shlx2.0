@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { format } from "date-fns";
 
 import nodatafound from "../assets/nodatafound.jpg";
 import loadinng from "../assets/loading.gif";
 import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
-import {FaUserEdit,FaTimesCircle } from "react-icons/fa";
+import { FaUserEdit, FaTimesCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-import { Footer, Location, Pagination, TeacherAddNew, TeacherSearch } from "../components";
+import {
+  Footer,
+  Location,
+  Pagination,
+  TeacherAddNew,
+  TeacherDetail,
+  TeacherSearch,
+} from "../components";
 
 const Teacher = ({ currentPage }) => {
   const [data, setData] = useState([]);
@@ -95,6 +102,17 @@ const Teacher = ({ currentPage }) => {
   const handleAddNewClose = () => {
     setIsAddNewOpen(false);
   };
+  //Open Teacher details
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+
+  const handleDetailOpen = () => {
+    setIsDetailOpen(true);
+  };
+
+  const handleDetailClose = () => {
+    setIsDetailOpen(false);
+  };
+
   return (
     <div className="m-4 bg-white w-12/12 space-y-2 h-[95%]">
       <div className="m-4 h-[6%] font-bold text-2xl max-phone:text-[20px] max-phone:pt-2">
@@ -109,10 +127,15 @@ const Teacher = ({ currentPage }) => {
           onSubmitGpdt={handleGpdtSubmit}
           onSubmitGplx={handleGplxSubmit}
           onSelectStatus={handleSelectStatus}
-          onAddButtonClick={handleAddNewOpen} 
+          onAddButtonClick={handleAddNewOpen}
         />
         <div className="w-full flex justify-end">
-          <div><Pagination onPageChange={handlePageChange} totalCount={totalCount} /></div>
+          <div>
+            <Pagination
+              onPageChange={handlePageChange}
+              totalCount={totalCount}
+            />
+          </div>
         </div>
       </div>
       <div className="mx-4 h-[1px] bg-slate-200"></div>
@@ -171,7 +194,9 @@ const Teacher = ({ currentPage }) => {
                     </td>
                     <td className="text-xs border border-slate-100">
                       <div className="flex items-center justify-center">
-                        {element.name}
+                        <Link className="text-blue-800 cursor-pointer font-bold"
+                        onClick={handleDetailOpen}
+                        >{element.name}</Link>
                       </div>
                     </td>
                     <td className="text-xs border border-slate-100">
@@ -232,7 +257,7 @@ const Teacher = ({ currentPage }) => {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
       {isAddNewOpen && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center z-50"
@@ -248,6 +273,27 @@ const Teacher = ({ currentPage }) => {
             <button
               className="absolute top-0 right-0 m-2 text-red-500 text-2xl"
               onClick={handleAddNewClose}
+            >
+              <FaTimesCircle />
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+      {isDetailOpen && (
+        <motion.div
+          className="fixed inset-0 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }} // Thiết lập giá trị ban đầu cho opacity
+          animate={{ opacity: 1 }} // Thiết lập giá trị cuối cùng cho opacity (tức là khi div xuất hiện)
+        >
+          <div
+            className="fixed inset-0 bg-black opacity-50"
+            onClick={handleDetailClose}
+          ></div>
+          <motion.div className="relative bg-white p-4 rounded-lg shadow-lg w-[70%] h-[70%] max-phone:h-fit">
+            <TeacherDetail/>
+            <button
+              className="absolute top-0 right-0 m-2 text-red-500 text-2xl"
+              onClick={handleDetailClose}
             >
               <FaTimesCircle />
             </button>

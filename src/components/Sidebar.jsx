@@ -234,7 +234,6 @@ const Sidebar = ({ show, toggleSidebar }) => {
           animate={{ x: 0, width: 255 }}
           transition={{ duration: 0.7 }}
         >
-          
           <div className="bg-slate-800 p-4 h-full flex flex-col">
             <div className="h-10 px-2 my-4 ">
               <Link
@@ -363,26 +362,33 @@ const Sidebar = ({ show, toggleSidebar }) => {
                       <span>Danh sách học viên</span>
                     </Link>
                     <Link
-                      to="/course"
-                      className="font-medium text-sm items-center rounded-lg text-white px-6 py-2.5 flex
-                          transition-all duration-200 hover:bg-gray-200 hover:text-black group cursor-pointer"
+                      to="/session"
+                      className={`font-medium text-sm items-center rounded-lg text-white px-6 py-2.5 flex
+                        transition-all duration-200 hover:bg-gray-200 hover:text-black group cursor-pointer ${
+                          pathname === "/session"
+                            ? "border border-slate-200"
+                            : ""
+                        }`}
                     >
                       <HiOutlineChartSquareBar className="text-xl mr-2" />
                       <span>Danh sách phiên học</span>
                     </Link>
-                    <a
-                      href="#"
-                      className="font-medium text-sm items-center rounded-lg text-white px-6 py-2.5 flex
-                          transition-all duration-200 hover:bg-gray-200 hover:text-black group cursor-pointer"
+                    <Link
+                      to="/outdoor"
+                      className={`font-medium text-sm items-center rounded-lg text-white px-6 py-2.5 flex
+                                              transition-all duration-200 hover:bg-gray-200 hover:text-black group cursor-pointer ${
+                                                pathname === "/outdoor"
+                                                  ? "border border-slate-200"
+                                                  : ""
+                                              }`}
                     >
                       <HiOutlineBookOpen className="text-xl mr-2" />
                       <span>Giám sát thực hành</span>
-                    </a>
+                    </Link>
                   </div>
                 </motion.div>
               </div>
             </div>
-
           </div>
         </motion.div>
       )}
@@ -392,7 +398,6 @@ const Sidebar = ({ show, toggleSidebar }) => {
           initial={{ x: 0, width: 255 }}
           animate={{ x: 0, width: 0 }}
           transition={{ duration: 0.7 }}
-
         >
           <div className="bg-slate-800 p-4 h-full">
             {/* <div className="h-10 p-2 ">

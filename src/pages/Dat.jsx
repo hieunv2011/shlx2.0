@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
-import { format } from "date-fns";
-
 import nodatafound from "../assets/nodatafound.jpg";
 import loadinng from "../assets/loading.gif";
 import {FaUserEdit,FaTimesCircle } from "react-icons/fa";

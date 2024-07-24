@@ -4,8 +4,6 @@ import Select from "react-select";
 import { FaFileCsv } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
-
 class CardAddNew extends React.Component {
   constructor(props) {
     super(props);

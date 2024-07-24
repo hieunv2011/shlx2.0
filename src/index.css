@@ -81,3 +81,7 @@
   .hover-icon:hover {
     color: blue !important; /* Màu sẽ thay đổi khi di chuột qua */
   }
+
+  #my-popper {
+    z-index: 100 !important;
+}

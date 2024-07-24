@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import { BrowserRouter as Router, Routes, Route, Link,useLocation, useRoutes  } from "react-router-dom";
 import { Navigation, Sidebar,Tabbar } from "./components";
 import Dashboard from "./pages/Dashboard";
-import {Card, Course, Dat, Login, Session, Teacher, Trainees } from "./pages";
+import {Card, Course, Dat, Login, Outdoor, Session, Teacher, Trainees } from "./pages";
 import TrainningCar from "./pages/TrainningCar";
 import { useEffect, useState } from "react";
 
@@ -33,6 +33,7 @@ function App() {
               <Route path="/trainees" element={<Trainees />} /> 
               <Route path="/trainees/:course_id" element={<Trainees />} /> 
               <Route path="/trainningcar" element={<TrainningCar />} /> 
+              <Route path="/outdoor" element={<Outdoor/>} /> 
             </Routes>
           </div>
         </div>

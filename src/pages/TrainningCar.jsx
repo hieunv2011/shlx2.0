@@ -5,11 +5,7 @@ import { format } from "date-fns";
 
 import nodatafound from "../assets/nodatafound.jpg";
 import loadinng from "../assets/loading.gif";
-import { FaCheckCircle, FaUserEdit, FaFingerprint } from "react-icons/fa";
-import { BiFace } from "react-icons/bi";
-import { IoIosCloseCircle } from "react-icons/io";
-import { TbReload } from "react-icons/tb";
-
+import {FaUserEdit} from "react-icons/fa";
 
 import { Location, Pagination, DatSearch } from "../components";
 
